@@ -67,23 +67,24 @@ app.get("/api/messages/all", function(req, res) {
     // res.send("OK");
 });
 
-app.get("/api/messages/:tonumber", function(req, res) {
-    client.messages.list({
-        from: "+18583751208",
-        to: "+" + req.params.tonumber
-    }, function(err, data) {
-        // console.log("data.messages", data.messages);
-        data.messages.forEach(function(message) {
-            console.log(message.body, message.dateCreated);
-        });
-    });
-    res.send("OK");
-});
+// app.get("/api/messages/:tonumber", function(req, res) {
+//     client.messages.list({
+//         from: "+18583751208",
+//         to: "+" + req.params.tonumber
+//     }, function(err, data) {
+//         // console.log("data.messages", data.messages);
+//         data.messages.forEach(function(message) {
+//             console.log(message.body, message.dateCreated);
+//         });
+//     });
+//     res.send("OK");
+// });
 
 app.post("/api/send_message", function(req, res) {
     console.log("send msg", req.body, req.body.message);
     client.messages.create({
-            to: "+18582436018",
+            // to: "+18582436018",
+            to: req.body.toNumber,
             from: "+18583751208",
             body: req.body.message,
         },

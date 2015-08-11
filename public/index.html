@@ -11,15 +11,15 @@
 
 <body ng-app="myApp">
     <div ng-controller="MainController">
-        <h1>Moi</h1>
+        <h1>Text Support</h1>
         <!-- {{content}}
         <iframe ng-src="{{content}}" style="width:auto;height:auto; border:2px solid red"></iframe> -->
 
         <form>
             <span>Text: </span>
-            <input type="text" placeholder="to number">
-            <input type="text" placeholder="message">
-            <button>Submit</button>
+            <input type="text" placeholder="to number" ng-model="newMsg.toNumber">
+            <input type="text" placeholder="message" ng-model="newMsg.message">
+            <button ng-click="postMsg()">Submit</button>
         </form>
         <div ng-repeat="message in messages">
             {{message.from}} {{message.to}} {{message.date | date: "short"}} {{message.message}}

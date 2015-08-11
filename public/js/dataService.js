@@ -12,11 +12,10 @@ angular.module("myApp")
         };
         // this.getAllMessages();
 
-        this.sendMessage = function(message) {
+        this.postMsg = function(message) {
             var sendUrl = url + "/send_message";
-            return $http.post(sendUrl, {
-                message: message
-            }).then(function(response) {
+            return $http.post(sendUrl, message).then(function(response) {
+            	console.log("this.postMsg response:", response);
                 return response.data;
             });
         };
